@@ -68,4 +68,30 @@ float srtf(Process p[],int n){
         }
     return total_time/n;
     }
-}
+float non_preemptive(Processp[],int n){
+    int complete+0,time=0,highest;
+    int visited[MAX]={0};
+    float total_time=0;
+    float total_wait=0;
+    while(complete!=n){
+        int max_priority=-1;
+        highest=-1;
+        for (int i=0;i<n;i++){
+            if(p[i].arrival<=time && !visited[i])
+            if (p[i].priority>max_priority){
+                max_priority=p[i].priority;
+                highest=i;
+            }
+        }
+        if(highest==-1){
+            time++;
+            continue;}
+        visited[highest]=1;
+        time+=p[highest.burst];
+        p[highest.waiting=p[highest].completion-time-p[highest].arrival-p[highest].burst;
+        if(p[highest].waiting<0)
+            p[highest].waiting=0;
+        total_time+=p[highest].waiting;
+        complete++;}
+    return total_time/n;
+    }
